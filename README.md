@@ -1,88 +1,35 @@
-# Hitobito Development 👩🏽‍💻
+# CAuDri e.V. - Hitobito Development Server
 
-New here? Install our docker development [setup](doc/setup.md)!
+This repository is a fork of [hitobito/developement](https://github.com/hitobito/development). For general setup instructions, refer to the [README.md](https://github.com/hitobito/development/blob/master/README.md) of the original repository.
 
-## Development
+## General 
 
-Start developing by editing files locally with your preferred editor in the `app/hitobito/*` folders.
-Those directories are mounted inside the containers. So every saved file is instantly available inside the containers.
+We are using Hitobito internally for our member management. Since we are a rather small organization and rarely need to access the the server, we decided to only host the Hitobito development server locally. 
+Our member database is stored in our Cloud Storage and is accessible by our board members.
 
-:bulb: If you don't know where to begin changing something, have a look at our hitobito cheatsheet in [English](./doc/hitobito-cheatsheet-en.pdf) and [German](./doc/hitobito-cheatsheet.pdf).
+## Setup
 
-### Usage
+### Prerequisites
 
-To initialize the `hit` command, run the following in your console:
+Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine.
 
+### Installation
+**Note: Incomplete! Missing Database integration**
+
+1. Clone this repository and checkout the `caudri` branch
 ```bash
-bin/dev-env.sh
+git clone git@github.com:CAuDri/hitobito-dev.git 
+git checkout caudri
 ```
 
-To start the development environment, run:
-
+2. Initialize the Hitobito submodule
 ```bash
-hit up
+git submodule update --init
 ```
 
-Access hitobito via http://localhost:3000
-
-Get a list of available commands with:
-
+3. Start the development server
 ```bash
-hit help
+docker-compose up
 ```
+4. Wait for the server to start (this might take a couple of minutes). You can access the server at `http://localhost:3000/` in your browser.
 
-### Running tests
-
-#### Open a test shell
-
-When using this for the first time, once daily or after assets changed run the prep command:
-
-```bash
-hit test prep
-```
-
-Get a shell to run core or wagon specs:
-
-```bash
-hit test
-```
-
-#### Run desired tests
-
-Either, to run all tests:
-
-```bash
-rspec
-```
-
-or, to run specific tests:
-
-```bash
-rspec spec/models/person_spec.rb
-```
-
-### HTTP request debugging with pry
-
-For debugging with pry during a HTTP request, you can attach to the running docker container (detach with Ctrl+c):
-
-```bash
-hit rails attach
-```
-
-### Access Development Database
-
-```bash
-hit db console
-```
-
-### Rerunning seeds
-
-Useful when adding new seeds
-
-```bash
-hit rails seed
-```
-
-### Shutdown
-
-🍺 finished work ? execute `hit down` to shut down all running containers
