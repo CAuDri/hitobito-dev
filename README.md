@@ -4,7 +4,7 @@ This repository is a fork of [hitobito/developement](https://github.com/hitobito
 
 ## General 
 
-We are using Hitobito internally for our member management. Since we are a rather small organization and rarely need to access the the server, we decided to only host the Hitobito development server locally. 
+We are using Hitobito internally for our member management. Since we are a rather small organization and rarely need to access the the server, we decided to only host the Hitobito development server locally.\
 Our member database is stored in our Cloud Storage and is accessible by our board members.
 
 ## Setup
@@ -36,10 +36,10 @@ docker volume create hitobito_bundle
 docker-compose up
 ```
 
-5. Wait for the server to start (this might take a couple of minutes). You can access the server at `http://localhost:3000/` in your browser.
+5. Wait for the server to start (this might take a couple of minutes). You can access the server via [http://localhost:3000/](http://localhost:3000/).
 
 ### Login 
-(After initial database setup)
+(Following initial database setup)
 
 1. Open the rails console in the running rails container
 ```bash
@@ -54,4 +54,4 @@ admin.confirm
 
 3. Login with the following credentials:
 **Email:** admin@caudri-challenge.de
-**Password:** changeme!
+**Password:** changemeplease!
