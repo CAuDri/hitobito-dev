@@ -1,3 +1,6 @@
 [submodule "app/hitobito"]
 	path = app/hitobito
 	url = https://github.com/hitobito/hitobito.git
+[submodule "app/hitobito_caudri"]
+	path = app/hitobito_caudri
+	url = git@github.com:CAuDri/hitobito_caudri.git

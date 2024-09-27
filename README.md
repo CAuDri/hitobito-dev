@@ -13,23 +13,45 @@ Our member database is stored in our Cloud Storage and is accessible by our boar
 
 Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) are installed on your machine.
 
-### Installation
-**Note: Incomplete! Missing Database integration**
+### Setup Instructions
 
 1. Clone this repository and checkout the `caudri` branch
 ```bash
-git clone git@github.com:CAuDri/hitobito-dev.git 
-git checkout caudri
+git clone git@github.com:CAuDri/hitobito-dev.git && git checkout caudri
 ```
 
-2. Initialize the Hitobito submodule
+2. Initialize the Hitobito and CAuDri submodules
 ```bash
 git submodule update --init
 ```
 
-3. Start the development server
+3. Add Docker Volumes
+```bash 
+docker volume create hitobito_yarn_cache
+docker volume create hitobito_bundle
+```
+
+4. Start the development server
 ```bash
 docker-compose up
 ```
-4. Wait for the server to start (this might take a couple of minutes). You can access the server at `http://localhost:3000/` in your browser.
 
+5. Wait for the server to start (this might take a couple of minutes). You can access the server at `http://localhost:3000/` in your browser.
+
+### Login 
+(After initial database setup)
+
+1. Open the rails console in the running rails container
+```bash
+docker exec -it hitobito-dev-rails-1 bundle exec rails console
+```
+
+2. Confirm the account creation of the admin user
+```ruby 
+admin = Person.find_by(email: 'admin@caudri-challenge.de')
+admin.confirm
+```
+
+3. Login with the following credentials:
+**Email:** admin@caudri-challenge.de
+**Password:** changeme!
